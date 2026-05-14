@@ -1,0 +1,72 @@
+using System.Collections.Generic;
+// import java.util.HashMap;
+
+interface IProductService
+{
+    double GetPrice(String productName);
+}
+
+// ---------------------------------------Real ProductService ---------------
+class ProductService : IProductService   // Java:  implements IProductService
+{
+    public double GetPrice(String productName)
+    {
+        // Imagine this calls a database or API
+        return 100.5;
+    }
+}
+
+// -------------------- Class with Dependency -------------------------------
+class Purchase
+{
+    private readonly IProductService productService;
+
+    public Purchase(IProductService productService)
+    {
+        this.productService = productService;
+    }
+
+    public double CalculateTotal(string productName, int quantity)
+    {
+        double price = productService.GetPrice(productName);
+
+        //-------------------- Code under test ----------
+        double totalPrice = price * quantity;
+        if (totalPrice > 1000)
+        {
+            totalPrice *= 0.1;
+        }
+        return totalPrice;
+    }
+}
+//-------------------------------------- Stub --------------------------------------
+class StubProductService : IProductService   // Java: StubProductService implements IProductService
+{
+    public double GetPrice(String productName)
+    {
+        Dictionary<string, double> products = new Dictionary<string, double>();
+        // HashMap<String, Double> products = new Dictionary<>();
+        products.Add("Pen", 10);
+        products.Add("Paper", 3.45);
+        products.Add("Ink", 12.5);
+
+        return products[productName];
+    }
+}
+
+//---------------------------------- Test -----------------------------------------
+class ProductService_Tests
+{
+//    [TestMethod]
+    public void Test_Purchase_total_price_for_under_1000_no_discount_applied()
+    {
+        var stub = new StubProductService();
+        var purchase = new Purchase(stub);      // DI here
+
+        var res = purchase.CalculateTotal("Paper", 100);
+
+//        Assert.AreEqual(345, res); 
+    }
+}
+
+

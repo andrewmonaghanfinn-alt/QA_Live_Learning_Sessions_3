@@ -1,0 +1,108 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System;
+
+// Nuget install: Selenium.WebDriver, SeleniumExtras.WaitHelpers
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        IWebDriver driver = new ChromeDriver();
+        driver.Navigate().GoToUrl("https://www.qa.com/");
+        driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+
+        var element = driver.FindElement(By.CssSelector("#CybotCookiebotDialogBodyButtonAccept"));
+        element.Click();
+
+        element  = driver.FindElement(By.Name("search"));
+        element.Click();
+        element.SendKeys("java" + Keys.Enter);
+
+        // usingPOM(driver);
+
+        // JavaScriptExecuterDemo(driver);
+
+    }
+
+    private static void usingPOM(IWebDriver driver)
+    {
+        QA_POM qa = new QA_POM(driver);
+
+        qa.OpenandResizeWebsite("https://www.qa.com/");
+        qa.clickCookiesButton();
+
+        qa.doSearch("java");
+        string res = qa.getElementBycss(".number").Text;
+        Console.WriteLine(res);
+        Console.ReadLine();
+    }
+
+    private static void JavaScriptExecuterDemo(IWebDriver driver)
+    {
+        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+
+        string title = (string)js.ExecuteScript("return document.title;");
+        Console.WriteLine(title);
+        js.ExecuteScript("document.querySelectorAll('.h1')[0].style.backgroundColor = 'red'");
+
+    }
+}
+
+
+//-------------------------- Using Page Object Model POM -------------------------------
+class QA_POM
+{
+    private IWebDriver driver;
+
+    public QA_POM(IWebDriver driver)
+    {
+        this.driver = driver;
+    }
+
+
+    public void doSearch(string searchText)
+    {
+        IWebElement search = driver.FindElement(By.Name("search"));
+        search.Click();
+        search.SendKeys(searchText + Keys.Enter);
+    }
+
+    public void clickCookiesButton()
+    {
+        getElementBycss("#CybotCookiebotDialogBodyButtonAccept").Click();
+    }
+
+    public void OpenandResizeWebsite(String url)
+    {
+        driver.Navigate().GoToUrl(url);
+        driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+    }
+
+    public IWebElement getElementBycss(string css)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        IWebElement element = wait.Until(driver =>
+        {
+            var el = driver.FindElement(By.CssSelector(css));
+            return el.Displayed ? el : null;
+        });
+        return element;
+    }
+
+    public IWebElement getElementByName(string name)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        IWebElement element = wait.Until(driver =>
+        {
+            var el = driver.FindElement(By.Name(name));
+            return el.Displayed ? el : null;
+        });
+        return element;
+    }
+}
+
+
+
+
