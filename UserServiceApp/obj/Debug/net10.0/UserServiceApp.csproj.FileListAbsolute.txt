@@ -10,3 +10,4 @@ C:\Users\fandrewmonaghan\QA_Live_Learning_Labs\Module 3.1 Software Automation an
 C:\Users\fandrewmonaghan\QA_Live_Learning_Labs\Module 3.1 Software Automation and Testing\UserServiceApp\obj\Debug\net10.0\refint\UserServiceApp.dll
 C:\Users\fandrewmonaghan\QA_Live_Learning_Labs\Module 3.1 Software Automation and Testing\UserServiceApp\obj\Debug\net10.0\UserServiceApp.pdb
 C:\Users\fandrewmonaghan\QA_Live_Learning_Labs\Module 3.1 Software Automation and Testing\UserServiceApp\obj\Debug\net10.0\ref\UserServiceApp.dll
+C:\Users\fandrewmonaghan\QA_Live_Learning_Labs\Module 3.1 Software Automation and Testing\UserServiceApp\obj\Debug\net10.0\UserServiceApp.csproj.AssemblyReference.cache

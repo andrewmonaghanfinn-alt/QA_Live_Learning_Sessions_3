@@ -4,7 +4,7 @@ using Xunit;
 using Moq;
 using UserServiceApp;
 
-public class UserServiceTest
+public class UserServiceTestWithMoq
 {
 
 
@@ -47,6 +47,7 @@ public class UserServiceTest
         var moqRepository = new Mock<UserServiceMoqRepository>();
 
         UserService userService = new UserService(moqRepository.Object);
+
 
         // act
 

@@ -1,4 +1,5 @@
-﻿namespace UserServiceTests;
+﻿/*
+namespace UserServiceTests;
 
 using Xunit;
 using UserServiceApp;
@@ -295,3 +296,5 @@ public class UserServiceTest
 
 
 }
+
+*/

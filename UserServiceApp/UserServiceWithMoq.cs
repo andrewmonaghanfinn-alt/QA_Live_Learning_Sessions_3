@@ -1,8 +1,8 @@
-using System.Diagnostics;
+/*
 
 namespace UserServiceApp;
 
-public class UserService
+public class UserServiceWithMoq
 {
     private readonly UserServiceMoqRepository repository;
 
@@ -114,3 +114,5 @@ public class User
         this.Role = role;
     }
 }
+
+*/
