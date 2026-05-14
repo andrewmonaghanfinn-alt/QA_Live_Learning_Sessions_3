@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+
+public class UserDatabaseStub {
+
+    // Simple lists to store stub data
+    private ArrayList<String> usernames = new ArrayList<>();
+    private ArrayList<String> passwords = new ArrayList<>();
+    private ArrayList<String> roles = new ArrayList<>();
+
+    // Stub method to save a user
+    public void saveUser(String username, String password, String role) {
+        usernames.add(username);
+        passwords.add(password);
+        roles.add(role);
+    }
+
+    // Stub method to check if username exists
+    public boolean usernameExists(String username) {
+        return usernames.contains(username);
+    }
+
+    // Stub method to get stored password
+    public String getPassword(String username) {
+        int index = usernames.indexOf(username);
+        if (index == -1) {
+            return null;
+        }
+        return passwords.get(index);
+    }
+
+    // Stub method to get stored role
+    public String getRole(String username) {
+        int index = usernames.indexOf(username);
+        if (index == -1) {
+            return null;
+        }
+        return roles.get(index);
+    }
+}

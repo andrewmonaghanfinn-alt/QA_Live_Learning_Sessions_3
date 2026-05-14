@@ -1,6 +1,0 @@
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\bin\Debug\LibraryService.dll
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\bin\Debug\LibraryService.pdb
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\obj\Debug\LibraryService.csprojAssemblyReference.cache
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\obj\Debug\LibraryService.csproj.CoreCompileInputs.cache
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\obj\Debug\LibraryService.dll
-C:\QA\2026 QA courses\2025 M3\Solutions\LibraryService\LibraryService\obj\Debug\LibraryService.pdb

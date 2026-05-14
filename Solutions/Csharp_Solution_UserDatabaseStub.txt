@@ -1,0 +1,43 @@
+public class UserDatabaseStub
+{
+    // Simple lists to store Stub data
+    private List<string> usernames = new List<string>();
+    private List<string> passwords = new List<string>();
+    private List<string> roles = new List<string>();
+
+    // Stub method to save a user
+    public void SaveUser(string username, string password, string role)
+    {
+        usernames.Add(username);
+        passwords.Add(password);
+        roles.Add(role);
+    }
+
+    // Stub method to check if username exists
+    public bool UsernameExists(string username)
+    {
+        return usernames.Contains(username);
+    }
+
+    // Stub method to get stored password
+    public string GetPassword(string username)
+    {
+        int index = usernames.IndexOf(username);
+        if (index == -1)
+        {
+            return null;
+        }
+        return passwords[index];
+    }
+
+    // Stub method to get stored role
+    public string GetRole(string username)
+    {
+        int index = usernames.IndexOf(username);
+        if (index == -1)
+        {
+            return null;
+        }
+        return roles[index];
+    }
+}
