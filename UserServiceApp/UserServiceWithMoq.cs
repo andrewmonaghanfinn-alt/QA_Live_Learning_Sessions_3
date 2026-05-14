@@ -1,12 +1,18 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 namespace UserServiceApp;
 
 public class UserService
 {
-    public Dictionary<String, User> users = new Dictionary<String, User>();
+    private readonly UserServiceMoqRepository repository;
 
-   
+    public UserService(UserServiceMoqRepository injectedRepository)
+    {
+        repository = injectedRepository;
+    }
+
+
+
     public void RegisterUser(String username, String password, String role)
     {
         // throw IllegalArgumentException (or a custom exception)
@@ -20,7 +26,7 @@ public class UserService
         String special_characters = "!@#$%^&*";
         String numbers = "0123456789";
 
-        if (users.ContainsKey(username))
+        if (repository.UserExists(username))
         {
             throw new ArgumentException("User is already registered");
         }
@@ -46,7 +52,7 @@ public class UserService
         }
 
         // else do:
-        users.Add(username, new User(username, password, role));
+        repository.AddUser(new User(username, password, role));
         // 	Then test username is added
     }
 
@@ -62,11 +68,11 @@ public class UserService
         {
             throw new ArgumentException("Invalid username");
         }
-        if (!users.ContainsKey(username))
+        if (!repository.UserExists(username))
         {
             throw new ArgumentException("User is not registered");
         }
-        else if (users[username].Password != password)
+        else if (repository.GetUser(username).Password != password)
         {
             return false;
         }
@@ -85,7 +91,7 @@ public class UserService
         {
             throw new ArgumentException("Invalid username");
         }
-        if (users.ContainsKey(username) && users[username].Role == requiredRole)
+        if (repository.GetUser(username) && repository.GetUser(username).Role == requiredRole)
         {
             return true;
         }
