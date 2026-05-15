@@ -2,3 +2,8 @@
 Labs_old/
 OneDrive
 ~$*
+
+bin/
+obj/
+.vs/
+TestResults/

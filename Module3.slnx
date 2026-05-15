@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/EG-05_Test_Project/">
+    <Project Path="EG-05_Test_Project/TestProject/TestProject.csproj" />
+  </Folder>
   <Project Path="UserServiceApp/UserServiceApp.csproj" />
   <Project Path="UserServiceTests/UserServiceTests.csproj" />
 </Solution>
